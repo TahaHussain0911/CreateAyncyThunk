@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createUser } from "../../store/slice/userSlice";
+import { createNote } from "../../store/slice/noteSlice";
 import DisplayData from "../../components/DisplayData";
 
 const CreateForm = () => {
-  const [users, setUsers] = useState({
+  const [notes, setNotes] = useState({
     name: "",
     title: "",
     description: "",
@@ -13,19 +12,18 @@ const CreateForm = () => {
   });
   const { loading } = useSelector((state) => state.app);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setUsers({ ...users, [e.target.name]: e.target.value });
+    setNotes({ ...notes, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const params = {
-      ...users,
+      ...notes,
     };
-    dispatch(createUser(params));
-    setUsers({
+    dispatch(createNote(params));
+    setNotes({
       name: "",
       title: "",
       description: "",
@@ -41,7 +39,7 @@ const CreateForm = () => {
             type="text"
             name="name"
             class="form-control"
-            value={users?.name}
+            value={notes?.name}
             onChange={handleChange}
             placeholder="Enter name"
             required
@@ -53,7 +51,7 @@ const CreateForm = () => {
             type="title"
             name="title"
             class="form-control"
-            value={users?.title}
+            value={notes?.title}
             onChange={handleChange}
             placeholder="Enter Title"
             required
@@ -65,7 +63,7 @@ const CreateForm = () => {
             type="text"
             name="description"
             class="form-control"
-            value={users?.description}
+            value={notes?.description}
             placeholder="Enter Description"
             onChange={handleChange}
             required
@@ -77,7 +75,7 @@ const CreateForm = () => {
             name="gender"
             value="Male"
             type="radio"
-            checked={users?.gender==='Male'}
+            checked={notes?.gender==='Male'}
             onChange={handleChange}
             required
           />
@@ -89,7 +87,7 @@ const CreateForm = () => {
             name="gender"
             value="Female"
             type="radio"
-            checked={users?.gender==='Female'}
+            checked={notes?.gender==='Female'}
             onChange={handleChange}
           />
           <label class="form-check-label">Female</label>

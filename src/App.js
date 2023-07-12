@@ -4,12 +4,12 @@ import "./App.css";
 import Header from "./components/Header";
 import CreateForm from "./pages/CreateForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { showUser } from "./store/slice/userSlice";
+import {  showNotes } from "./store/slice/noteSlice";
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(showUser());
+    dispatch(showNotes());
   }, []);
   const { loading } = useSelector((state) => state.app);
   if (loading) {

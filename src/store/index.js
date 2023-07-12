@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import user from "./slice/userSlice";
+import note from "./slice/noteSlice";
 
 export const store=configureStore({
     reducer:{
-        app:user
+        app:note
     }
 })
