@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import Header from "./components/Header";
+import CreateForm from "./pages/CreateForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { showUser } from "./store/slice/userSlice";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(showUser());
+  }, []);
+  const { loading } = useSelector((state) => state.app);
+  if (loading) {
+    return (
+      <>
+        {" "}
+        <div className="text-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<CreateForm />} exact />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

@@ -1,0 +1,23 @@
+.notesContainer{
+    padding: 10px 40px;
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 1em;
+    text-align: center;
+
+}
+.notesContainer h2{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid silver;
+    font-size: 50px;
+}
+.notesContainer h5{
+    font-size: 30px;
+    margin-bottom: 17px;
+}
+.notesContainer p{
+    line-height: 50px;
+    font-size: 20px;
+}
